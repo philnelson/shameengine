@@ -1,0 +1,31 @@
+/*style sheet */
+
+#questionbox {
+	text-align: center;
+}
+
+#haveA {
+	text-align:right;
+}
+
+#questionbox textarea {
+	height: 100px;
+}
+
+.post {
+	margin: 10px 0 10px 0;
+	border: 1px solid #eee;
+	padding: 5px;
+}
+
+#questionbox input {
+	margin: 0;
+}
+
+#questionbox h1 {
+	margin: 0;
+}
+
+#questionbox select {
+
+}
