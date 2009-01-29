@@ -1,0 +1,80 @@
+<html>
+<head>
+	<title>Change Camp Prototype</title>
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="../css/blueprint/blueprint/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="../css/blueprint/blueprint/print.css" type="text/css" media="print">
+	<!--[if IE]><link rel="stylesheet" href="../css/blueprint/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+	<!-- Import fancy-type plugin for the sample page. -->
+	<link rel="stylesheet" href="../css/blueprint/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	
+	<script src="http://maps.google.com/maps?file=api&amp;v=2.1&amp;key=ABQIAAAAhKmW6TN0CiPqXCUjd9Y9sxTgtaT0YcsA7oWKq5sA2DUkHZo1FBTw33sYJQHUT6mFpnjr7QYaty53_w" type="text/javascript"></script>
+	<script type="text/javascript">
+		
+		//<![CDATA[
+		var singleClick = false;
+		function createCircle(point, radius) {
+		  singleClick = false;
+		  geoQuery = new GeoQuery();
+		  geoQuery.initializeCircle(radius, point, myMap);
+		  myQueryControl.addGeoQuery(geoQuery);
+		  geoQuery.render();
+		}
+		function load() {
+			if (GBrowserIsCompatible()) {
+				var map = new GMap2(document.getElementById("map"));
+				var center = new GLatLng(43.670233, -79.386755);
+				map.setCenter(center, 13);
+				map.addControl(new GSmallMapControl());
+        		map.addControl(new GMapTypeControl());
+        		var baseIcon = new GIcon(G_DEFAULT_ICON);
+		        baseIcon.image = "you_here_marker.png";
+		        baseIcon.iconSize = new GSize(134, 34);
+		        baseIcon.shadowSize = new GSize(134, 34);
+		        baseIcon.iconAnchor = new GPoint(134, 34);
+		        baseIcon.infoWindowAnchor = new GPoint(122, 15);
+				var marker = new GMarker(center, {icon:baseIcon, bouncy:true, draggable: true});
+				
+				GEvent.addListener(marker, "dragstart", function() {
+				  map.closeInfoWindow();
+				  });
+				
+				GEvent.addListener(marker, "dragend", function() {
+				  marker.openInfoWindowHtml('<div class="info-bubble" style="margin: 5px; width: 350px;">I have a <select><option>Problem</option><option>Question</option><option>Announcement</option></select> regarding <select><option>my street</option><option>my city</option><option>my province</option><option>my country</option></select><br>It goes like this: <br /><textarea style="width: 100%; height: 75px;"></textarea></div>');
+				  });
+				
+				map.addOverlay(marker);
+			}
+		}
+		
+		//]]>
+    </script>
+</head>
+<body onload="load()" onunload="GUnload()">
+<div class="container" id="airlock">
+	<div class="span-24 last">
+		<div class="span-24">
+			<h2>#shamen demo 1a</h2>
+			<div class="span-10">
+				<p>Hi. You can either drop your pin in the map or fill out this form. It's up to you.</p>
+				I have a <select><option>Problem</option><option>Question</option><option>Announcement</option></select> regarding <select><option>my street</option><option>my city</option><option>my province</option><option>my country</option></select><br>It goes like this: <br /><textarea style="width: 100%; height: 75px;"></textarea>
+			</div>
+			<div class="span-14 last">
+				<div id="map" style="width:500px;height:300px"></div>
+			</div>
+		</div>
+		<div class="span-24">
+			<h1>Notes:</h1>
+			<ul>
+				<li>Doesn't actually save anything</li>
+				<li>Missing resizable circles for scope, they may be a usability nightmare w/ mouse but not with iPhone-type device. Possibly include BOTH the dropdown menu and resizable scope circle</li>
+				<li>This took 40 minutes</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>
