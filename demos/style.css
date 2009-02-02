@@ -26,3 +26,7 @@ p {
 form .subtext {
 	float: right;
 }
+
+.error {
+	color: red;
+}
