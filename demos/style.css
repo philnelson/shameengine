@@ -1,12 +1,28 @@
 body {
-	font-family: georgia, serif;
-	font-size: 15px;
-}
-
-.info-bubble {
 	
 }
 
-select {
-	font-weight: bold;
+label {
+	clear: both;
+}
+
+input, label, textarea {
+	font-size: 20px;
+}
+
+.and {
+	text-align: center;
+	font-family: cursive;
+	font-size: 15px;
+	margin: 10px 0 10px 0;
+	padding: 0;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+form .subtext {
+	float: right;
 }

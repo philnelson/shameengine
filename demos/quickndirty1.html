@@ -1,16 +1,11 @@
 <html>
 <head>
 	<title>Change Camp Prototype</title>
-	<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
-
 	<!-- Framework CSS -->
 	<link rel="stylesheet" href="../css/blueprint/blueprint/screen.css" type="text/css" media="screen, projection">
 	<link rel="stylesheet" href="../css/blueprint/blueprint/print.css" type="text/css" media="print">
 	<!--[if IE]><link rel="stylesheet" href="../css/blueprint/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
-
-	<!-- Import fancy-type plugin for the sample page. -->
-	<link rel="stylesheet" href="../css/blueprint/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
-	
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
 	<script src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=ABQIAAAAhKmW6TN0CiPqXCUjd9Y9sxTgtaT0YcsA7oWKq5sA2DUkHZo1FBTw33sYJQHUT6mFpnjr7QYaty53_w" type="text/javascript"></script>
 	<script type="text/javascript">
 		 var map;
@@ -50,7 +45,7 @@
 	    function reverseGeocode(response) {
 	      map.clearOverlays();
 	      if (!response || response.Status.code != 200) {
-	        alert("Status Code:" + response.Status.code);
+	        //alert("Status Code:" + response.Status.code);
 	      } else {
 	        place = response.Placemark[0];
 	        point = new GLatLng(place.Point.coordinates[1],
@@ -69,6 +64,7 @@
 		  		marker.closeInfoWindow();
 		  	});
 		  	GEvent.addListener(marker, "dragend", getAddress);
+		  	map.setCenter(point, 15);
 	      }
 		  
 	    }
@@ -80,25 +76,31 @@
 	<div class="span-24 last">
 		<div class="span-24">
 			<div id="column-a" class="span-10">
-				<h2>#shamen geocoding demo 1</h2>
 				<form id="findLocation" name="findLocation" action="#">
-					<input type="text" size="27" name="address" value="1600 Amphitheatre Pky, Mountain View, CA" />
-					<a href="#" style="border: 1px solid blue; padding: 3px;" onclick="frontGeocode(document.findLocation.address.value); return false">&raquo;</a>
+					<label for="address">I live at or near</label>
+					<input type="text" style="width: 100%" name="address" onblur="frontGeocode(this.value); return false" value="The Mod Club, Toronto, ON" />
 				</form>
+				<p class="and">- and -</p> 
 				<form id="helloForm">
-					I have a <select><option>Problem</option><option>Question</option><option>Announcement</option></select><br> regarding <select><option>my street</option><option>my city</option><option>my province</option><option>my country</option></select><br>It goes like this: <br /><textarea style="width: 100%; height: 75px;"></textarea>
+					<label for="message">I want to say</label>
+					<textarea name="message" style="width: 100%; height: 75px;"></textarea>
+					<div class="subtext">
+						<label for="scope">about</label>
+						<select name="scope"><option>my street</option><option>my city</option><option>my province</option><option>my country</option></select>
+					</div>
 				</form>
 			</div>
 			<div class="span-14 last">
-				<div id="map" style="width:500px;height:300px"></div>
+				<div id="map" style="width:500px;height:309px"></div>
 				<p>Click anywhere to put your pin in the map.</p>
 			</div>
 		</div>
 		<div class="span-24">
 			<h1>Notes:</h1>
 			<ul>
-				<li>Entirely cribbed from <a href="http://code.google.com/apis/maps/documentation/examples/geocoding-reverse.html">this example in google's documentation</a></li>
+				<li>Almost entirely cribbed from <a href="http://code.google.com/apis/maps/documentation/examples/geocoding-reverse.html">this example in google's documentation</a></li>
 				<li>There's an annoying bug where it gives you a "can't geocode this" error (602) when you click the info window.</li>
+				<li>The actual "problem" form doesn't do anything still. I know.</li>
 				<li>All work and no play makes jack a dull boy.</li>
 			</ul>
 		</div>
