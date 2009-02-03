@@ -81,6 +81,8 @@
 			{
 				geocoder.getLocations(overlay, reverseGeocode);
 			}
+			$('#geoError').hide('fast');
+			//alert(overlayType);
 			//alert(latlng + " " + overlay);
 	    }
 	

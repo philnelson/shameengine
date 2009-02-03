@@ -6,7 +6,7 @@ label {
 	clear: both;
 }
 
-input, label, textarea {
+input, label, select, textarea {
 	font-size: 20px;
 }
 
@@ -14,7 +14,7 @@ input, label, textarea {
 	text-align: center;
 	font-family: cursive;
 	font-size: 15px;
-	margin: 10px 0 10px 0;
+	margin: 10px 0 5px 0;
 	padding: 0;
 }
 
