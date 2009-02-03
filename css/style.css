@@ -1,31 +1,36 @@
-/*style sheet */
+body {
+	
+}
 
-#questionbox {
+label {
+	clear: both;
+}
+
+input, label, select, textarea {
+	font-size: 20px;
+}
+
+.and {
 	text-align: center;
+	font-family: cursive;
+	font-size: 15px;
+	margin: 10px 0 5px 0;
+	padding: 0;
 }
 
-#haveA {
-	text-align:right;
-}
-
-#questionbox textarea {
-	height: 100px;
-}
-
-.post {
-	margin: 10px 0 10px 0;
-	border: 1px solid #eee;
-	padding: 5px;
-}
-
-#questionbox input {
+p {
 	margin: 0;
+	padding: 0;
 }
 
-#questionbox h1 {
-	margin: 0;
+form .subtext {
+	float: right;
 }
 
-#questionbox select {
+.error {
+	color: red;
+}
 
+#remaining strong {
+	font-weight: bold;
 }
